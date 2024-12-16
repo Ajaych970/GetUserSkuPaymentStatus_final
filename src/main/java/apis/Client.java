@@ -52,7 +52,7 @@ public class Client extends WebSocketClient {
             throw new RuntimeException(e);
         }
         System.out.println("Received "+message);
-        System.out.println("Received JsonData : "+receivedJsonData);
+//        System.out.println("Received JsonData : "+receivedJsonData);
 //        dataContext.messageList.add(message);
         close();
 

@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -31,11 +32,12 @@ public class VerifyWebSocketAPIs {
         context.actualMessage="This is a test";
     }
 
-    @Test
+    @Test()
     public void verifyWebSocketAPI() throws JsonProcessingException {
         SocketServiceData responseContext=WebClient.getInstance().connectAndListen(context);
         try {
             webClient.sentMesssage();
+//            webClient.sendMessageToWebSocket(responseContext);
         } catch (JsonProcessingException | NullPointerException e) {
             throw new RuntimeException(e);
         }

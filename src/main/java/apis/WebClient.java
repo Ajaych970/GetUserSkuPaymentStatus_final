@@ -55,6 +55,26 @@ public class WebClient {
         return socketContext;
     }
 
+//    public void sendMessageToWebSocket(SocketServiceData socketContext) throws JsonProcessingException, URISyntaxException {
+////        webSocket = new Client(socketContext);
+//        boolean isSent=false;
+//        System.out.println("send message log.....");
+//        while (!webSocket.isClosed()){
+//            if(webSocket.connectionAliveTime()>=socketContext.timeOut){
+//                webSocket.close(1006,"Time Out");
+//            }
+//            if(!isSent){
+////                    webSocket.onMessage(socketContext.actualMessage);
+//                sentMesssage();
+//                isSent=true;
+//
+//            }
+//        }
+//
+//    }
+
+
+
 
     public void sentMesssage() throws JsonProcessingException {
         Map<String, Object> requestData = Client.readJsonFromFile("src/main/java/Request/request.json");
