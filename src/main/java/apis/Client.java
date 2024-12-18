@@ -9,14 +9,16 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Date;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
+import java.util.concurrent.CountDownLatch;
 
 public class Client extends WebSocketClient {
+    CountDownLatch messageLatch;
     SocketServiceData dataContext;
     Date openedTime=new Date();
     Date closedTime=new Date();
+    List<String> data;
+
 
 
 
@@ -44,28 +46,37 @@ public class Client extends WebSocketClient {
 
     @Override
     public void onMessage(String message) {
-        String receivedJsonData=null;
+
+        String receivedJsonData = null;
+        messageLatch = new CountDownLatch(1); // Initialize the latch to count down upon receiving a message
+
         try {
+            // Parse the message into JSON
             Object jsonData = objectMapper.readValue(message, Object.class);
             receivedJsonData = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonData);
+
+            // Signal that the message has been received
+            messageLatch.countDown();
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Received "+message);
-//        System.out.println("Received JsonData : "+receivedJsonData);
-//        dataContext.messageList.add(message);
-        close();
-
-//        if(dataContext.expectedMessage.equals(message)){
-//            closeConnection(1000,"Received expected message");
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
 //        }
+
+        // Log the received message
+        dataContext.messageList.add(message);
+
+        System.out.println("Received response: " + message);
+
+
     }
 
     @Override
     public void onClose(int code, String reason, boolean remote) {
-        int timeElapsed = connectionAliveTime();
-        System.out.println("Connection time (seconds) "+timeElapsed);
-        dataContext.statusCode=code;
+
     }
 
     @Override
@@ -80,7 +91,7 @@ public class Client extends WebSocketClient {
         return timeInSeconds;
     }
 
-    // Method to send JSON request
+    // send JSON request
     public void sendJsonRequest(Object requestData) {
         try {
             // Serialize the request object to JSON
@@ -93,7 +104,7 @@ public class Client extends WebSocketClient {
     }
 
 
-    // Method to read JSON from input file
+    // read JSON from input file
     public static Map<String, Object> readJsonFromFile(String filePath) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
@@ -106,8 +117,8 @@ public class Client extends WebSocketClient {
     }
 
 
-    @Override
-    public void close() {
-        super.close();
-    }
+//    @Override
+//    public void close() {
+//        super.close();
+//    }
 }

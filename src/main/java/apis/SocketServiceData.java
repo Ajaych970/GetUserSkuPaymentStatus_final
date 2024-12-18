@@ -11,6 +11,7 @@ public class SocketServiceData {
     String expectedMessage;
     Map<String,String> requestHeaders=new HashMap<>();
     List<String> messageList=new ArrayList<>();
+    int totalNumberOfResponse=0;
     int statusCode;
     int timeOut=10;
     int timeTaken;
