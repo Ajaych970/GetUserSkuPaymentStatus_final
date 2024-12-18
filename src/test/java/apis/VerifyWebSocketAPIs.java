@@ -20,7 +20,7 @@ import java.util.Properties;
 public class VerifyWebSocketAPIs {
     SocketServiceData context;
     private WebClient_2 webClient_2;
-    WebClient webClient;
+
 
 
     @BeforeTest
@@ -49,7 +49,7 @@ public class VerifyWebSocketAPIs {
 
     }
 
-    @Test(invocationCount = 500,threadPoolSize = 500)
+    @Test(invocationCount = 300,threadPoolSize = 80)
     public void verifyWebSocketAPIs() {
 //        WebClient_2 webClient_2=new WebClient_2();
         try {

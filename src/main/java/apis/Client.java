@@ -69,7 +69,7 @@ public class Client extends WebSocketClient {
         // Log the received message
         dataContext.messageList.add(message);
 
-        System.out.println("Received response: " + message);
+//        System.out.println("Received response: " + message);
 
 
     }
