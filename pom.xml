@@ -71,6 +71,61 @@
       <scope>compile</scope>
     </dependency>
 
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>2.29.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.jmeter</groupId>
+      <artifactId>ApacheJMeter_core</artifactId>
+      <version>5.6.2</version>
+    </dependency>
+
+
+    <!-- https://mvnrepository.com/artifact/org.apache.jmeter/jorphan -->
+    <dependency>
+      <groupId>org.apache.jmeter</groupId>
+      <artifactId>jorphan</artifactId>
+      <version>5.6.2</version>
+    </dependency>
+
+
+
+
+    <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.24.2</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.24.2</version>
+    </dependency>
+
+
+    <!-- https://mvnrepository.com/artifact/net.luminis.jmeter/jmeter-websocket-samplers -->
+    <dependency>
+      <groupId>net.luminis.jmeter</groupId>
+      <artifactId>jmeter-websocket-samplers</artifactId>
+      <version>1.2.8</version>
+    </dependency>
+
+
+
+
+    <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
+    <dependency>
+      <groupId>com.opencsv</groupId>
+      <artifactId>opencsv</artifactId>
+      <version>5.7.1</version>
+    </dependency>
+
 
 
 

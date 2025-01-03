@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level - %msg%n"/>
+        </Console>
+        <File name="File" fileName="src/main/java/Data/log4.log" append="true">
+            <PatternLayout>
+                <Pattern>%d{HH:mm:ss.SSS} [%t] %-5level - %msg%n</Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <JsonLayout complete="false" compact="false">
+                <KeyValuePair key="myCustomField" value="myCustomValue" />
+            </JsonLayout>
+        </Console>
+        <File name="File" fileName="src/main/java/Data/log4.json" append="true">
+            <PatternLayout>
+                <KeyValuePair key="myCustomField" value="myCustomValue" />
+            </PatternLayout>
+<!--            <Policies>-->
+<!--                <SizeBasedTriggeringPolicy size="10MB" />-->
+<!--            </Policies>-->
+        </File>
+    </Appenders>
+<!--    <Appenders>-->
+<!--        <Console name="Console" target="SYSTEM_OUT">-->
+<!--            <JsonLayout complete="false" compact="false">-->
+<!--                <KeyValuePair key="myCustomField" value="myCustomValue" />-->
+<!--            </JsonLayout>-->
+<!--        </Console>-->
+<!--        <RollingFile name="File" fileName="src/main/java/Data/log4.json"-->
+<!--                     filePattern="src/main/java/Data/log4-%d{yyyy-MM-dd}-%i.json">-->
+<!--            <JsonLayout complete="false" compact="false">-->
+<!--                <KeyValuePair key="myCustomField" value="myCustomValue" />-->
+<!--            </JsonLayout>-->
+<!--            <Policies>-->
+<!--                <SizeBasedTriggeringPolicy size="10MB" />-->
+<!--            </Policies>-->
+<!--            <DefaultRolloverStrategy max="5" />-->
+<!--        </RollingFile>-->
+<!--    </Appenders>-->
+    <Loggers>
+        <Logger name="com.sdetadda" level="info" additivity="true">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="File"/>
+        </Root>
+    </Loggers>
+</Configuration>
